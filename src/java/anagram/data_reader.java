@@ -37,7 +37,7 @@ public class data_reader {
 //    String   p_service_query ;
     
     String   p_wordlist_data ;
-    String   p_answer ;
+    String   p_answer = "" ;
     
    
         
@@ -176,7 +176,7 @@ public class data_reader {
             // found anagram
                 answer_count++ ;
                 
-                p_answer += anagram_word + s_sorted_query ;
+                p_answer += anagram_word ;
         
             } 
             else
@@ -188,21 +188,13 @@ public class data_reader {
             
         }
         
-        p_answer = p_answer + answer_count ;
-        
-//        p_answer = sorted_answer ;
-     
-        
-//        p_answer = p_wordlist_data ;
-        
-        
-        
+        p_answer = p_answer ;
+              
         }
         catch ( Exception e )
         {
             
-//            p_answer = e.getMessage() ;
-            p_answer = "error" ;
+            p_answer = e.getMessage() ;
             
         }
         
