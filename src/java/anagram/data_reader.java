@@ -25,6 +25,8 @@ import java.util.HashSet ;
 import java.util.Scanner;
 import java.util.Set;
 
+import java.util.Arrays;
+
 
 public class data_reader {
     
@@ -80,7 +82,7 @@ public class data_reader {
             
             
             while (( l_inputLine = inBuffer.readLine()) != null) {
-                    http_response.append( l_inputLine );
+                    http_response.append( l_inputLine + "\n" );
             }
             inBuffer.close();
              
@@ -126,27 +128,44 @@ public class data_reader {
     
 
   
-    public void build_hashset(){
+    public void build_hashset( String S_answer ){
+            
+        int       answer_count ;
+        String    sorted ;
+        String    sorted_answer ;
         
         
-        Set<String> anagram_hashset = new HashSet<String>();
+        answer_count = 1 ;
         
-//        string line = p_wordlist_data.split("[ˆa-zA-Z]+") ;
+        sorted_answer = S_answer.trim().chars().sorted().toString() ;
+        
+        
+    //    Set<String> anagram_hashset = new HashSet<String>();
+        
+        
+        for (String anagram_word : p_wordlist_data.split("\\n")){
+            
 
-        for (String anagram_word : p_wordlist_data.split("\\\\n")){
-            anagram_hashset.add(anagram_word.trim());
+            sorted = anagram_word.trim().chars().sorted().toString() ;
+            
+            if ( sorted_answer == sorted ) {
+            
+            // found anagram
+                answer_count++ ;
+                
+                p_answer = p_answer + sorted ;
+        
+            } 
+                       
+            
         }
         
-        if (anagram_hashset.contains("AAA")) {
-            
-            p_answer = "found" ;
-            
-        }else{        
-            
-            p_answer = "notfound" ;
-
-        }
+        p_answer = p_answer + answer_count ;
+     
         
+//        p_answer = p_wordlist_data ;
+        
+
     }
     
     
