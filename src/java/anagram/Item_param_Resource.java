@@ -84,7 +84,7 @@ public class Item_param_Resource {
         
         l_reader.read_data();   
         
-        l_reader.build_hashset();
+        l_reader.build_hashset( this.param );
         
 //        l_reader.get_anagram() ;
         
